@@ -16,4 +16,5 @@ class TodoAdmin(admin.ModelAdmin):
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Profile, ProfileAdmin)
+
 admin.site.register(Todo, TodoAdmin)
