@@ -3,7 +3,7 @@ from api.serializer import (
     RegisterSerializer,
     UserSerializer,
     MyTokenObtainPairSerializer,
-    TodoSerializer
+    TodoSerializer,
 )
 
 from rest_framework.decorators import api_view, permission_classes
@@ -41,8 +41,21 @@ class TodoListView(generics.ListCreateAPIView):
     serializer_class = TodoSerializer
 
     def get_queryset(self):
-        user_id = self.kwargs['user_id']
-        user = User.objects.get(id = user_id)
+        user_id = self.kwargs["user_id"]
+        user = User.objects.get(id=user_id)
 
-        todo = Todo.objects.filter(user = user)
+        todo = Todo.objects.filter(user=user)
+        return todo
+
+
+class TodoDetailView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = TodoSerializer
+
+    def get_object(self):
+        user_id = self.kwargs["user_id"]
+        todo_id = self.kwargs["todo_id"]
+
+        user = User.objects.get(id=user_id)
+        todo = Todo.objects.get(id=todo_id, user=user)
+
         return todo
