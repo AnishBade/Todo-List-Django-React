@@ -1,8 +1,9 @@
-from api.models import Profile, User
+from api.models import Profile, User, Todo
 from api.serializer import (
     RegisterSerializer,
     UserSerializer,
     MyTokenObtainPairSerializer,
+    TodoSerializer
 )
 
 from rest_framework.decorators import api_view, permission_classes
@@ -33,3 +34,15 @@ def dashboard(request):
         response = f"Hey {request.user}, Your text is {text}"
         return Response({"response": response}, status=status.HTTP_200_OK)
     return Response({}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class TodoListView(generics.ListCreateAPIView):
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializer
+
+    def get_queryset(self):
+        user_id = self.kwargs['user_id']
+        user = User.objects.get(id = user_id)
+
+        todo = Todo.objects.filter(user = user)
+        return todo

@@ -7,4 +7,6 @@ urlpatterns = [
     path("token/refresh/", TokenRefreshView.as_view()),
     path("register/", views.RegisterView.as_view()),
     path("dashboard/", views.dashboard),
+    # Todo URLs
+    path("todo/<user_id>/", views.TodoListView.as_view()),
 ]
