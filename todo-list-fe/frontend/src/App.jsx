@@ -6,6 +6,7 @@ import Dashboard from "./views/Dashboard";
 import LoginPage from "./views/LoginPage";
 import RegisterPage from "./views/RegisterPage";
 import HomePage from "./views/HomePage";
+import Todo from "./views/Todo";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
           <Route path='/login' element={<LoginPage />}> </Route>
           <Route path='/register' element={<RegisterPage />}></Route>
+          <Route path='/todo' element={<Todo />}></Route>
         </Routes>
       </AuthProvider>
 

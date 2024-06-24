@@ -46,6 +46,9 @@ function Navbar() {
                                         <Link className="nav-link" to="/dashboard">Dashboard</Link>
                                     </li>
                                     <li className="nav-item">
+                                        <Link className="nav-link" to="/todo">Todo</Link>
+                                    </li>
+                                    <li className="nav-item">
                                         <a className="nav-link" onClick={logoutUser} style={{ cursor: 'pointer' }}>Logout</a>
                                     </li>
                                 </>
